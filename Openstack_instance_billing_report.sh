@@ -6,7 +6,7 @@
 start_date=2021-02-01
 end_date=2021-02-28
 
-echo \"Project Name\",\"Project ID\",\"VM Name\",\"VM ID\",\"VM State\",\"CPU hours\",\"Memory MB hours\",\"VM Flavour\"
+echo \"Project Name\",\"Project ID\",\"VM Name\",\"VM ID\",\"VM State\",\"CPU hours\",\"Memory MB hours\",\"VM Flavor\"
 
 for os_project_id in $(openstack project list -f value -c ID)
 do
