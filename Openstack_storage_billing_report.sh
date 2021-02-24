@@ -14,7 +14,7 @@ do
   while IFS="," read -r os_vol_id_in_project os_vol_name_in_project os_vol_status_in_project os_vol_size_in_project os_vol_attached_in_project
   do
     os_vol_gb_hours=$(eval openstack metric measures show -r $os_vol_id_in_project volume.size --granularity 300 --resample 3600 -f value -c value --start $start_date --stop $end_date | paste -sd+ - | bc)
-    os_vol_attached_in_project=$(eval echo $os_vol_attached_in_project | sed 's/Attached to //' | sed 's/ on \/dev\/.*//'
-    echo \"$os_project_name\",\"$os_project_id\",$os_vol_name_in_project,$os_vol_id_in_project,$os_vol_status_in_project,$os_vol_attached_in_project,$os_vol_gb_hours
+    os_vol_attached_in_project_trimmed=$(eval echo $os_vol_attached_in_project | sed 's/Attached to //' | sed 's/ on \/dev\/.*//')
+    echo \"$os_project_name\",\"$os_project_id\",$os_vol_name_in_project,$os_vol_id_in_project,$os_vol_status_in_project,$os_vol_attached_in_project_trimmed,$os_vol_gb_hours
   done < <(openstack volume list -f csv -c ID -c Name -c Status -c Size -c 'Attached to' --project $os_project_id | tail -n +2)
 done
