@@ -3,8 +3,8 @@
 # Openstack billing report gnocchi instances dump to CSV
 #
 
-start_date=2021-02-01
-end_date=2021-02-28
+start_date=2021-03-01
+end_date=2021-04-01
 
 echo \"Project Name\",\"Project ID\",\"VM Name\",\"VM ID\",\"VM State\",\"CPU hours\",\"Memory MB hours\",\"VM Flavor\"
 
